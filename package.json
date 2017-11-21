@@ -1,0 +1,22 @@
+{
+  "name": "tsp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "tsc": "tsc -w",
+    "server": "nodemon ./build/bin/www.js",
+    "start": "npm run tsc && npm run server"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "^2.6.8",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "morgan": "^1.8.2",
+    "serve-favicon": "^2.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.24"
+  }
+}
