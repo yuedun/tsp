@@ -9,7 +9,7 @@ var Route = (function () {
         this.greeting = greet;
     }
     Route.prototype.default = function () {
-        console.log(this.greeting);
+        console.log("default:", this.greeting);
     };
     __decorate([
         route("hello")
@@ -18,6 +18,12 @@ var Route = (function () {
 }());
 function route(name) {
     return function (target, value, desc) {
-        console.log('>>>>', name);
+        var method = desc.value;
+        console.log('>>>>method:', method);
+        desc.value = function () {
+            console.log("这才是函数执行时输出");
+            method.apply(this);
+        };
     };
 }
+new Route("开始执行").default();
