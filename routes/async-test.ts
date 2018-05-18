@@ -21,4 +21,4 @@ var asyncReadFile = async function() {
 	console.log(">>>>>>>>>>>>>3", f3);
 };
 
-asyncReadFile()
+// asyncReadFile()

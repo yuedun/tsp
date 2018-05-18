@@ -40,17 +40,14 @@ var router = express.Router();
 var async_test_1 = require("./async-test");
 router.get('/', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
-        var f1, f2;
+        var f1, a;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4, async_test_1.readFile('E:/TDownload/常用.txt')];
                 case 1:
                     f1 = _a.sent();
-                    return [4, async_test_1.readFile('E:/TDownload/te.txt')];
-                case 2:
-                    f2 = _a.sent();
                     console.log(">>>>>>>>>>>>>1", f1.toString());
-                    console.log(">>>>>>>>>>>>>2", f2.toString());
+                    a = 1;
                     res.render('index', { title: 'Express' });
                     return [2];
             }
@@ -61,3 +58,4 @@ router.get('/md', function (req, res) {
     res.render('md');
 });
 module.exports = router;
+//# sourceMappingURL=index.js.map

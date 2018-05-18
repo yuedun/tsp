@@ -70,4 +70,4 @@ var asyncReadFile = function () {
         });
     });
 };
-asyncReadFile();
+//# sourceMappingURL=async-test.js.map

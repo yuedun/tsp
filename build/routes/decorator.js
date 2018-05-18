@@ -27,3 +27,4 @@ function route(name) {
     };
 }
 new Route("开始执行").default();
+//# sourceMappingURL=decorator.js.map

@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+require('source-map-support/register');
 var app = require('../app');
 var debug = require('debug')('tsp:server');
 var http = require('http');

@@ -10,7 +10,7 @@
         "experimentalDecorators": true,//装饰器
         "noEmitOnError": true,//ts文件错误时不生成js
         "outDir": "./build",//编译文件输出目录
-        "sourceMap": false//是否生成.map文件，用于ts debug调试
+        "sourceMap": true //是否生成.map文件，用于ts debug调试
     },
     "include": [
         "./**/*.ts"
