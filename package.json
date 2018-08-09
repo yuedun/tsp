@@ -5,7 +5,7 @@
   "scripts": {
     "tsc": "tsc -w",
     "server": "nodemon ./build/bin/www.js",
-    "start": "npm run tsc && npm run server"
+    "start": "node run.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
