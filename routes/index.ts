@@ -14,7 +14,7 @@ router.get('/', async function (req: any, res: any, next: any) {
 });
 
 router.get('/md', function (req: Request, res: Response) {
-	res.render('md')
-})
+	res.render('md');
+});
 
 module.exports = router;
