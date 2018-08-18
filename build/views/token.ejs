@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>token</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="javascripts/jquery-1.11.1.min.js"></script>
+    <script>
+      $(function(){
+        $("button").on('click', function () {
+          var token = $("h1").html();
+          $.ajax('/validToken?token='+token,{
+            headers:{token:token}
+          }, function(res){
+            console.log(res);
+            
+          })
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <h1><%= token %></h1>
+    <button>验证token</button>
+  </body>
+</html>

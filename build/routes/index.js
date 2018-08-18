@@ -35,8 +35,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var router = express.Router();
+var express_1 = require("express");
+var jwt = require("jsonwebtoken");
+var router = express_1.Router();
 var async_test_1 = require("./async-test");
 router.get('/', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
@@ -56,6 +57,17 @@ router.get('/', function (req, res, next) {
 });
 router.get('/md', function (req, res) {
     res.render('md');
+});
+router.get('/getToken', function (req, res) {
+    var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+    res.setHeader("token", token);
+    res.render('token', { token: token });
+});
+router.get('/validToken', function (req, res) {
+    var token = req.query.token;
+    console.log("header:", req.headers['token']);
+    var decoded = jwt.verify(token, 'shhhhh');
+    res.send(decoded.foo);
 });
 module.exports = router;
 //# sourceMappingURL=index.js.map

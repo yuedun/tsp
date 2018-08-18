@@ -1,8 +1,6 @@
-import { Request, Response } from "express";
-import * as express from "express";
-
-
-var router = express.Router();
+import { Router, Request, Response } from 'express';
+import * as jwt from "jsonwebtoken";
+var router = Router();
 import { readFile } from './async-test';
 
 /* GET home page. */
@@ -17,4 +15,17 @@ router.get('/md', function (req: Request, res: Response) {
 	res.render('md');
 });
 
+router.get('/getToken', function (req: Request, res: Response) {
+	let token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+	res.setHeader("token", token);
+	res.render('token', { token });
+});
+
+router.get('/validToken', function (req: Request, res: Response) {
+	let token = req.query.token;
+	console.log("header:",req.headers['token']);
+
+	var decoded: any = jwt.verify(token, 'shhhhh');
+	res.send(decoded.foo)
+})
 module.exports = router;
