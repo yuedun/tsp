@@ -39,6 +39,7 @@ var express_1 = require("express");
 var jwt = require("jsonwebtoken");
 var router = express_1.Router();
 var async_test_1 = require("./async-test");
+var sequelize = require('../db');
 router.get('/', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var f1, a;
@@ -49,6 +50,15 @@ router.get('/', function (req, res, next) {
                     f1 = _a.sent();
                     console.log(">>>>>>>>>>>>>1", f1.toString());
                     a = 1;
+                    sequelize.query("insert into users (mobile) values ('19638527419')", {
+                        type: sequelize.QueryTypes.INSETT
+                    }).spread(function (results, metadata) { }).then(function () {
+                        sequelize.query("select * from users where mobile='19638527418'", {
+                            type: sequelize.QueryTypes.SELECT
+                        }).spread(function (results, metadata) {
+                            console.log(results);
+                        });
+                    });
                     res.render('index', { title: 'Express' });
                     return [2];
             }
