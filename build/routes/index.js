@@ -76,8 +76,13 @@ router.get('/getToken', function (req, res) {
 router.get('/validToken', function (req, res) {
     var token = req.query.token;
     console.log("header:", req.headers['token']);
-    var decoded = jwt.verify(token, 'shhhhh');
-    res.send(decoded.foo);
+    try {
+        var decoded = jwt.verify(token, 'shhhhh');
+        res.send(decoded.foo);
+    }
+    catch (error) {
+        res.send(error);
+    }
 });
 module.exports = router;
 //# sourceMappingURL=index.js.map
