@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var EventEmitter = require("events");
-var emitter = new EventEmitter();
+const EventEmitter = require("events");
+let emitter = new EventEmitter();
 emitter.on('myEvent', function sth() {
     emitter.on('myEvent', sth);
     console.log('hi');

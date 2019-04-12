@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "module": "commonjs",//模块化规范
-        "target": "es5",//生成js版本
+        "target": "es6",//生成js版本
         "lib":["es2017", "es2015.reflect"],
         "noImplicitAny": false,//
         "noImplicitReturns": true,//函数没有返回值提示
@@ -14,6 +14,7 @@
         "emitDecoratorMetadata": true,
     },
     "include": [
+        "app.ts",
         "./**/*.ts"
     ],
     "exclude": [

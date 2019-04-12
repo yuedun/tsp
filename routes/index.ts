@@ -1,19 +1,17 @@
 import { Router, Request, Response } from 'express';
 import * as jwt from "jsonwebtoken";
+import { QueryTypes } from "sequelize";
+import sequelize from "../libs/db";
+import test from "../libs/reload";
 const router = Router();
-import { readFile } from './async-test';
-const sequelize = require('../db');
 
 /* GET home page. */
 router.get('/', async function (req: any, res: any, next: any) {
-	var f1 = await readFile('E:/TDownload/常用.txt');
-	console.log(">>>>>>>>>>>>>1", f1.toString());
-	var a = 1;
 	sequelize.query(`insert into users (mobile) values ('19638527419')`, {
-		type: sequelize.QueryTypes.INSETT
+		type: QueryTypes.INSERT
 	}).spread((results, metadata) => { }).then(() => {
 		sequelize.query(`select * from users where mobile='19638527418'`, {
-			type: sequelize.QueryTypes.SELECT
+			type: QueryTypes.SELECT
 		}).spread((results, metadata) => {
 			console.log(results)
 		})
@@ -22,6 +20,8 @@ router.get('/', async function (req: any, res: any, next: any) {
 });
 
 router.get('/md', function (req: Request, res: Response) {
+	console.log(test("张三", 23));
+	
 	res.render('md');
 });
 

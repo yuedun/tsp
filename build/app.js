@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
+const express = require("express");
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
