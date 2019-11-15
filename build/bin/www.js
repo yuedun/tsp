@@ -1,11 +1,13 @@
 #!/usr/bin/env node
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 require('source-map-support/register');
-var app = require('../app');
+const app_1 = require("../app");
 var debug = require('debug')('tsp:server');
 var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-var server = http.createServer(app);
+app_1.default.set('port', port);
+var server = http.createServer(app_1.default);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

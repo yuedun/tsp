@@ -21,25 +21,30 @@ router.get('/', async function (req: any, res: any, next: any) {
 
 router.get('/md', function (req: Request, res: Response) {
 	console.log(test("张三", 23));
-	
 	res.render('md');
 });
 
+/**
+ * 获取token
+ */
 router.get('/getToken', function (req: Request, res: Response) {
 	let token = jwt.sign({ foo: 'bar' }, 'shhhhh');
-	res.setHeader("token", token);
+	res.cookie("token", token);
 	res.render('token', { token });
 });
 
+/**
+ * 验证token
+ */
 router.get('/validToken', function (req: Request, res: Response) {
-	let token = req.query.token;
-	console.log("header:", req.headers['token']);
-
+	let token = req.cookies['token'];
+	console.log("header cookies:", token);
 	try {
-		var decoded: any = jwt.verify(token, 'shhhhh');
-		res.send(decoded.foo)
+		var decoded = jwt.verify(token, 'shhhhh');
+		res.send(decoded)
 	} catch (error) {
 		res.send(error)
 	}
-})
-module.exports = router;
+});
+
+export default router;

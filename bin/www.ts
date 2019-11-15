@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 require('source-map-support/register');
-var app = require('../app');
+// var app = require('../app');
+import app from '../app';
 var debug = require('debug')('tsp:server');
 var http = require('http');
 

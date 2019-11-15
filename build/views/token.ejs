@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>token</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="javascripts/jquery-1.11.1.min.js"></script>
-    <script>
-      $(function(){
-        $("button").on('click', function () {
-          var token = $("h1").html();
-          $.get('/validToken?token='+token,{
-            headers:{token:token}
-          }, function(res){
-            console.log(res);
-            $("#result").html(JSON.stringify(res))
-          })
+
+<head>
+  <title>token</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="javascripts/jquery-1.11.1.min.js"></script>
+  <script>
+    $(function () {
+      $("button").on('click', function () {
+        var token = $("h1").html();
+        $.get('/validToken', {}, function (res) {
+          console.log(res);
+          $("#result").html(JSON.stringify(res))
         })
       })
-    </script>
-  </head>
-  <body>
-    <h1><%= token %></h1>
-    <button>验证token</button>
-    <h2><span>验证结果：</span><span id="result"></span></h2>
-  </body>
+    })
+  </script>
+</head>
+
+<body>
+  <h1><%= token %></h1>
+  <button>验证token</button>
+  <h2><span>验证结果：</span><span id="result"></span></h2>
+</body>
+
 </html>
