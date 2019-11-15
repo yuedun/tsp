@@ -9,7 +9,9 @@
     $(function () {
       $("button").on('click', function () {
         var token = $("h1").html();
-        $.get('/validToken', {}, function (res) {
+        $.get('/validToken', {
+          token: token
+        }, function (res) {
           console.log(res);
           $("#result").html(JSON.stringify(res))
         })

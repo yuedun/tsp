@@ -34,7 +34,9 @@ router.get('/md', function (req, res) {
     res.render('md');
 });
 router.get('/getToken', function (req, res) {
-    let token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+    let token = jwt.sign({ foo: 'bar' }, 'secret', {
+        expiresIn: 10
+    });
     res.cookie("token", token);
     res.render('token', { token });
 });
@@ -42,7 +44,7 @@ router.get('/validToken', function (req, res) {
     let token = req.cookies['token'];
     console.log("header cookies:", token);
     try {
-        var decoded = jwt.verify(token, 'shhhhh');
+        var decoded = jwt.verify(token, 'secret');
         res.send(decoded);
     }
     catch (error) {

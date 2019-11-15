@@ -28,7 +28,9 @@ router.get('/md', function (req: Request, res: Response) {
  * 获取token
  */
 router.get('/getToken', function (req: Request, res: Response) {
-	let token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+	let token = jwt.sign({ foo: 'bar' }, 'secret', {
+		expiresIn: 10
+	});
 	res.cookie("token", token);
 	res.render('token', { token });
 });
@@ -40,7 +42,7 @@ router.get('/validToken', function (req: Request, res: Response) {
 	let token = req.cookies['token'];
 	console.log("header cookies:", token);
 	try {
-		var decoded = jwt.verify(token, 'shhhhh');
+		var decoded = jwt.verify(token, 'secret');
 		res.send(decoded)
 	} catch (error) {
 		res.send(error)
