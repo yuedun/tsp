@@ -14,6 +14,7 @@ const jwt = require("jsonwebtoken");
 const sequelize_1 = require("sequelize");
 const db_1 = require("../libs/db");
 const reload_1 = require("../libs/reload");
+const signature = require('cookie-signature');
 const router = express_1.Router();
 router.get('/', function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -50,6 +51,11 @@ router.get('/validToken', function (req, res) {
     catch (error) {
         res.send(error);
     }
+});
+router.get('/t', function (req, res) {
+    var result = signature.unsign('z87EKpyNV0ZILi5JVidpiVahxnRoF4WV.EM+iXDGF9UQ4yH+QGYzn+tLa0CeMXTWEklHVEoNYacs', 'zm-session-key');
+    console.log(result);
+    res.send(result);
 });
 exports.default = router;
 //# sourceMappingURL=index.js.map

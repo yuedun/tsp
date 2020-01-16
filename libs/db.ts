@@ -1,12 +1,12 @@
 import { Sequelize } from "sequelize";
-const sequelize = new Sequelize('test', null, null, {
+const sequelize = new Sequelize('issue', null, null, {
 	dialect: 'mysql',
 	port: 3306,
 	replication: {
 		read: [
-			{ host: 'localhost', username: 'root', password: 'root' },
+			{ host: 'localhost', username: 'hop', password: 'hope' },
 		],
-		write: { host: 'localhost', username: 'root', password: 'root' }//读写分离
+		write: { host: 'localhost', username: 'hop', password: 'hope' }//读写分离
 	},
 	pool: { // If you want to override the options used for the read/write pool you can do so here
 		max: 20,

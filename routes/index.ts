@@ -3,6 +3,7 @@ import * as jwt from "jsonwebtoken";
 import { QueryTypes } from "sequelize";
 import sequelize from "../libs/db";
 import test from "../libs/reload";
+const signature = require('cookie-signature');
 const router = Router();
 
 /* GET home page. */
@@ -49,4 +50,11 @@ router.get('/validToken', function (req: Request, res: Response) {
 	}
 });
 
+router.get('/t', function(req, res){
+	var result = signature.unsign('z87EKpyNV0ZILi5JVidpiVahxnRoF4WV.EM+iXDGF9UQ4yH+QGYzn+tLa0CeMXTWEklHVEoNYacs',
+	 'zm-session-key');
+	console.log(result);
+	res.send(result);
+	
+})
 export default router;

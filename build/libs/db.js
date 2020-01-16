@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const sequelize = new sequelize_1.Sequelize('test', null, null, {
+const sequelize = new sequelize_1.Sequelize('issue', null, null, {
     dialect: 'mysql',
     port: 3306,
     replication: {
         read: [
-            { host: 'localhost', username: 'root', password: 'root' },
+            { host: 'localhost', username: 'hop', password: 'hope' },
         ],
-        write: { host: 'localhost', username: 'root', password: 'root' }
+        write: { host: 'localhost', username: 'hop', password: 'hope' }
     },
     pool: {
         max: 20,
