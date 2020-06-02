@@ -10,30 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-let Route = class Route {
-    constructor(greet) {
-        this.greeting = greet;
-    }
-    default() {
-        console.log("default:", this.greeting);
-    }
-};
-__decorate([
-    route("hello"),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Object)
-], Route.prototype, "default", null);
-Route = __decorate([
-    controller(""),
-    __metadata("design:paramtypes", [String])
-], Route);
+let Route = (() => {
+    let Route = class Route {
+        constructor(greet) {
+            this.greeting = greet;
+        }
+        default() {
+            console.log("default:", this.greeting);
+        }
+    };
+    __decorate([
+        route("hello"),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Object)
+    ], Route.prototype, "default", null);
+    Route = __decorate([
+        controller(""),
+        __metadata("design:paramtypes", [String])
+    ], Route);
+    return Route;
+})();
 function route(name) {
     return function (target, key, desc) {
         var method = desc.value;
-        var t = Reflect.getMetadata("design:type", target, key);
-        var a = Reflect.getMetadata("name", new Route("fdhh"));
-        console.log(`${key}-type: ${t.name}, ${a}`);
+        console.log('>>>>method:', method);
         desc.value = function () {
             console.log("这才是函数执行时输出");
             method.apply(this);
@@ -42,7 +43,6 @@ function route(name) {
 }
 function controller(name) {
     return (target) => {
-        Reflect.defineMetadata("name", "myctrl", target);
     };
 }
 new Route("开始执行").default();

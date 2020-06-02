@@ -16,10 +16,7 @@ class Route {
 function route(name: string) {
     return function (target: Object, key: string, desc: PropertyDescriptor) {
         var method = desc.value;
-        // console.log('>>>>method:', method);
-        var t = Reflect.getMetadata("design:type", target, key);
-        var a = Reflect.getMetadata("name", new Route("fdhh"));
-        console.log(`${key}-type: ${t.name}, ${a}`);
+        console.log('>>>>method:', method);
         desc.value = function () {
             console.log("这才是函数执行时输出")
             method.apply(this)
@@ -28,7 +25,7 @@ function route(name: string) {
 }
 function controller(name:string){
     return (target)=>{
-        Reflect.defineMetadata("name", "myctrl", target);
+        // Reflect.defineMetadata("name", "myctrl", target);
     }
 }
 

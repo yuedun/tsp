@@ -5,9 +5,11 @@
   "scripts": {
     "tsc": "tsc -w",
     "server": "set NODE_ENV=development& set DEBUG=tsp:* & nodemon ./build/bin/www.js",
-    "start": "node run.js"
+    "start": "node run.js",
+    "test": "jest"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "^7.7.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cookie-signature": "^1.1.0",
@@ -23,11 +25,27 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.6",
+    "@types/jest": "^25.2.3",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/node": "^14.0.5",
+    "@types/sequelize": "^4.28.9",
+    "jest": "^26.0.1",
     "nodemon": "^2.0.4",
     "rimraf": "^3.0.2",
     "source-map-support": "^0.5.19",
+    "ts-jest": "^26.1.0",
     "typescript": "^3.9.3"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/tests/.*\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": ["node_modules", "build"]
   }
 }
