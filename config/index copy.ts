@@ -1,0 +1,1 @@
+export const elastic = 'http://username:password@ip:9200';

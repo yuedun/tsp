@@ -6,7 +6,7 @@
     "tsc": "tsc -w",
     "server": "set NODE_ENV=development& set DEBUG=tsp:* & nodemon ./build/bin/www.js",
     "start": "node run.js",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.7.1",
@@ -43,7 +43,7 @@
       "js"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "\\.(ts|tsx)$": "ts-jest"
     },
     "testRegex": "/tests/.*\\.(ts|tsx|js)$",
     "testPathIgnorePatterns": ["node_modules", "build"]
