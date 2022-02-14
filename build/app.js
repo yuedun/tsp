@@ -9,13 +9,13 @@ const bodyParser = require('body-parser');
 const index_1 = require("./routes/index");
 const users_1 = require("./routes/users");
 const app = express();
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, process.env.NODE_ENV === 'development' ? 'build/views' : 'views'));
 app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, process.env.NODE_ENV === 'development' ? 'build/public' : 'public')));
 app.use('/', index_1.default);
 app.use('/users', users_1.default);
 app.use(function (req, res, next) {
@@ -30,4 +30,3 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 exports.default = app;
-//# sourceMappingURL=app.js.map

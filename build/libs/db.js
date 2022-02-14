@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
+const config_1 = require("../config");
 const sequelize = new sequelize_1.Sequelize('issue', null, null, {
     dialect: 'mysql',
     port: 3306,
     replication: {
         read: [
-            { host: 'localhost', username: 'hop', password: 'hope' },
+            { host: config_1.mysqlDB.host, username: config_1.mysqlDB.user, password: config_1.mysqlDB.pass },
         ],
-        write: { host: 'localhost', username: 'hop', password: 'hope' }
+        write: { host: config_1.mysqlDB.host, username: config_1.mysqlDB.user, password: config_1.mysqlDB.pass }
     },
     pool: {
         max: 20,
@@ -21,4 +22,3 @@ sequelize.authenticate().then(() => {
     console.error('连接失败：', err);
 });
 exports.default = sequelize;
-//# sourceMappingURL=db.js.map

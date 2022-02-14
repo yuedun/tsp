@@ -2,18 +2,18 @@ import { Router, Request, Response } from 'express';
 import * as jwt from "jsonwebtoken";
 import { QueryTypes } from "sequelize";
 import sequelize from "../libs/db";
-import test from "../libs/reload";
+import test from "../tests/reload";
 const signature = require('cookie-signature');
 const router = Router();
 
 /* GET home page. */
-router.get('/', async function (req: any, res: any, next: any) {
+router.get('/', async function (req: Request, res: Response) {
 	sequelize.query(`insert into users (mobile) values ('19638527419')`, {
 		type: QueryTypes.INSERT
-	}).spread((results, metadata) => { }).then(() => {
+	}).then(() => {
 		sequelize.query(`select * from users where mobile='19638527418'`, {
 			type: QueryTypes.SELECT
-		}).spread((results, metadata) => {
+		}).then((results) => {
 			console.log(results)
 		})
 	})

@@ -11,18 +11,39 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Elastic = void 0;
 const { Client } = require('@elastic/elasticsearch');
-const client = new Client({ node: 'http://localhost:9200' });
+const config_1 = require("../config");
+const client = new Client({ node: config_1.elastic });
 class Elastic {
     search() {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield client.search({
-                index: 'my-index',
-                body: { foo: 'bar' }
-            });
-            console.log(">>>>>>>>>>>>", result);
-            return result;
+            try {
+                const result = yield client.search({
+                    index: 'elk-nginxdomainname-2020-06-03',
+                    body: {
+                        query: {
+                            match: {
+                                referer: ""
+                            }
+                        }
+                    }
+                });
+                return result;
+            }
+            catch (error) {
+                console.error(error);
+            }
+        });
+    }
+    info() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield client.info();
+                return result;
+            }
+            catch (error) {
+                console.error(error);
+            }
         });
     }
 }
 exports.Elastic = Elastic;
-//# sourceMappingURL=elastic.js.map

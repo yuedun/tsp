@@ -10,27 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
-let Route = (() => {
-    let Route = class Route {
-        constructor(greet) {
-            this.greeting = greet;
-        }
-        default() {
-            console.log("default:", this.greeting);
-        }
-    };
-    __decorate([
-        route("hello"),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Object)
-    ], Route.prototype, "default", null);
-    Route = __decorate([
-        controller(""),
-        __metadata("design:paramtypes", [String])
-    ], Route);
-    return Route;
-})();
+let Route = class Route {
+    constructor(greet) {
+        this.greeting = greet;
+    }
+    default() {
+        console.log("default:", this.greeting);
+    }
+};
+__decorate([
+    route("hello"),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], Route.prototype, "default", null);
+Route = __decorate([
+    controller(""),
+    __metadata("design:paramtypes", [String])
+], Route);
 function route(name) {
     return function (target, key, desc) {
         var method = desc.value;
@@ -46,4 +43,3 @@ function controller(name) {
     };
 }
 new Route("开始执行").default();
-//# sourceMappingURL=decorator.js.map

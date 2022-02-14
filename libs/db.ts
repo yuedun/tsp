@@ -1,12 +1,13 @@
 import { Sequelize } from "sequelize";
+import { mysqlDB } from "../config";
 const sequelize = new Sequelize('issue', null, null, {
 	dialect: 'mysql',
 	port: 3306,
 	replication: {
 		read: [
-			{ host: 'localhost', username: 'hop', password: 'hope' },
+			{ host: mysqlDB.host, username: mysqlDB.user, password: mysqlDB.pass },
 		],
-		write: { host: 'localhost', username: 'hop', password: 'hope' }//读写分离
+		write: { host: mysqlDB.host, username: mysqlDB.user, password: mysqlDB.pass }//读写分离
 	},
 	pool: { // If you want to override the options used for the read/write pool you can do so here
 		max: 20,

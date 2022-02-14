@@ -13,17 +13,17 @@ const express_1 = require("express");
 const jwt = require("jsonwebtoken");
 const sequelize_1 = require("sequelize");
 const db_1 = require("../libs/db");
-const reload_1 = require("../libs/reload");
+const reload_1 = require("../tests/reload");
 const signature = require('cookie-signature');
-const router = express_1.Router();
-router.get('/', function (req, res, next) {
+const router = (0, express_1.Router)();
+router.get('/', function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         db_1.default.query(`insert into users (mobile) values ('19638527419')`, {
             type: sequelize_1.QueryTypes.INSERT
-        }).spread((results, metadata) => { }).then(() => {
+        }).then(() => {
             db_1.default.query(`select * from users where mobile='19638527418'`, {
                 type: sequelize_1.QueryTypes.SELECT
-            }).spread((results, metadata) => {
+            }).then((results) => {
                 console.log(results);
             });
         });
@@ -31,7 +31,7 @@ router.get('/', function (req, res, next) {
     });
 });
 router.get('/md', function (req, res) {
-    console.log(reload_1.default("张三", 23));
+    console.log((0, reload_1.default)("张三", 23));
     res.render('md');
 });
 router.get('/getToken', function (req, res) {
@@ -58,4 +58,3 @@ router.get('/t', function (req, res) {
     res.send(result);
 });
 exports.default = router;
-//# sourceMappingURL=index.js.map
